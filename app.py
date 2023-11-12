@@ -22,12 +22,10 @@ while True:
     frame1 = cv2.imdecode(data1, cv2.IMREAD_COLOR)
     frame2 = cv2.imdecode(data2, cv2.IMREAD_COLOR)
 
-    # Resize frames to have the same height (assuming both frames have the same width)
     min_height = min(frame1.shape[0], frame2.shape[0])
     frame1 = cv2.resize(frame1, (int(frame1.shape[1] * min_height / frame1.shape[0]), min_height))
     frame2 = cv2.resize(frame2, (int(frame2.shape[1] * min_height / frame2.shape[0]), min_height))
 
-    # Concatenate frames horizontally
     concatenated_frame = np.concatenate((frame1, frame2), axis=1)
 
     cv2.imshow("Concatenated Frames", concatenated_frame)
